@@ -1,0 +1,26 @@
+###########################################################
+# AUTHORS: Cheng-Hao CHEN & Hao LI
+# @SJTU
+# For free academic & research usage 
+# NOT for unauthorized commercial usage
+###########################################################
+
+# First stage
+sed -i 's:lr = old_lr/[0-9]:lr = old_lr/5:' misc.py
+sed -i '/L_img =.*\*L_img4/ s|[^+][^+]*\*L_img4|0\*L_img4|' derain
+
+./derain   # training to the 95th epoch
+
+
+# Second stage
+sed -i '/L_img =.*\*L_img4/ s|[^+][^+]*\*L_img4|1\*L_img4|' derain
+
+./derain   # training to the 95th epoch
+
+# Third stage
+sed -i 's:lr = old_lr/[0-9]:lr = old_lr/2:' misc.py
+sed -i '/L_img =.*\*L_img4/ s|[^+][^+]*\*L_img4|k\*L_img4|' derain
+
+./derain   # training to the 242th epoch
+
+
