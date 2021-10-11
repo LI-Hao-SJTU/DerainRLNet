@@ -25,8 +25,8 @@ from torch.autograd import Variable
 from misc import *
 import models.derain_dense_relu_test as net
 
-from myutils.vgg16 import Vgg16
-from myutils import utils
+# from myutils.vgg16 import Vgg16
+# from myutils import utils
 import pdb
 import torch.nn.functional as func
 
