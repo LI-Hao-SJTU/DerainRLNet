@@ -30,6 +30,8 @@ import models.derain_dense_relu as net
 import pdb
 
 parser = argparse.ArgumentParser()
+parser.add_argument('--epochTrainingNum', required=False, 
+  default=95, help='Number of training epochs')
 parser.add_argument('--dataset', required=False,
   default='pix2pix_class',  help='')
 parser.add_argument('--dataroot', required=False,
@@ -69,6 +71,7 @@ opt = parser.parse_args()
 
 create_exp_dir(opt.exp)
 
+epochTN = int(opt.epochTrainingNum)
 ngf = opt.ngf
 ndf = opt.ndf
 inputChannelSize = opt.inputChannelSize
@@ -122,7 +125,8 @@ optimizerG = optim.Adam(netG1.parameters(), lr = opt.lrG, betas = (opt.beta1, 0.
 
 k=0
 
-for epoch in range(0,270):
+# for epoch in range(0,270):
+for epoch in range(0,epochTN):
   
   if ((epoch+1) % 15)==0:
     k=1
@@ -196,7 +200,9 @@ for epoch in range(0,270):
     print(L_img10.item())
 
   if (epoch) % 1 == 0:
-          torch.save(netG1.state_dict(), '%s/netG1_epoch_%d.pth' % (opt.exp, epoch))
+    print('Finish training epoch %d' % epoch)
+    torch.save(netG1.state_dict(), '%s/netG1_epoch_%d.pth' % (opt.exp, epoch))
 
 trainLogger.close()
+
 
