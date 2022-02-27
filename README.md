@@ -12,6 +12,7 @@ pages={7742-7751} <br/>
 
 __Chenghao Chen, Hao Li; Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2021, pp. 7742-7751__
 
+https://openaccess.thecvf.com/content/CVPR2021/papers/Chen_Robust_Representation_Learning_With_Feedback_for_Single_Image_Deraining_CVPR_2021_paper.pdf
 
 A complementary note that provides heuristically theoretical explanations on the mechanism of representation learning with feedback is given by
 
